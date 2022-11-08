@@ -1,7 +1,7 @@
 module.exports = {
   apiSuccess(data) {
     return {
-      code: 200,
+      code: 1,
       data: data,
       message: "成功",
     };
