@@ -1,7 +1,7 @@
 const db = require("../app/database");
 const jwt = require("jsonwebtoken");
 const { apiSuccess, apiError } = require("../utils/apiBase");
-const md5password = require("../utils/password-handle");
+const { md5 } = require("../utils/crypto-utils");
 const { PRIVATE_KEY } = require("../app/config");
 
 class LoginService {
@@ -10,7 +10,7 @@ class LoginService {
     const [result] = await db.execute(sql, [username]);
     if (result.length == 0) {
       return apiError("无此用户");
-    } else if (md5password(password) != result[0].password) {
+    } else if (md5(password) != result[0].password) {
       return apiError("密码错误");
     } else {
       /*
