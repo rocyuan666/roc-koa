@@ -1,4 +1,5 @@
 const CryptoJs = require("crypto-js");
+const { DES_KEY } = require("../app/config");
 
 // md5加密
 const md5 = (message) => {
@@ -7,7 +8,7 @@ const md5 = (message) => {
 
 // DES加密
 const enDES = (message) => {
-  const keyHex = CryptoJS.enc.Utf8.parse("yuanpeng");
+  const keyHex = CryptoJS.enc.Utf8.parse(DES_KEY);
   const encrypted = CryptoJS.DES.encrypt(message, keyHex, {
     mode: CryptoJS.mode.ECB,
     padding: CryptoJS.pad.Pkcs7,
@@ -17,7 +18,7 @@ const enDES = (message) => {
 
 // DES解密
 const deDES = (ciphertext) => {
-  const keyHex = CryptoJS.enc.Utf8.parse("约定的key");
+  const keyHex = CryptoJS.enc.Utf8.parse(DES_KEY);
   const decrypted = CryptoJS.DES.decrypt(
     {
       ciphertext: CryptoJS.enc.Base64.parse(ciphertext),
