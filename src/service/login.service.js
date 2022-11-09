@@ -14,7 +14,7 @@ class LoginService {
       return apiError("密码错误");
     } else {
       /*
-        sign(主题信息, 私钥, 选项{algorithm: 算法, expiresIn: 到期时间})
+        sign(数据体, 私钥, 选项{algorithm: 算法, expiresIn: 到期时间})
         返回token
       */
       const token = jwt.sign(

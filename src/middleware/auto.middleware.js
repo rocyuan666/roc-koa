@@ -10,7 +10,7 @@ const tokenAuth = async (ctx, next) => {
     try {
       /*
         verify(token, 公钥, 选项{algorithms: 算法})
-        返回 主题信息 + iat与exp
+        返回 数据体 + iat与exp
       */
       const decode = jwt.verify(token, PUBLIC_KEY, { algorithms: ["RS256"] });
       ctx.user = decode;
