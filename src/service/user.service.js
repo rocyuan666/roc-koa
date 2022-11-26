@@ -1,11 +1,15 @@
 const db = require("../app/database");
-const { apiSuccess } = require("../utils/apiBase");
+const { apiSuccess, apiError } = require("../utils/apiBase");
 
 class UserService {
   async getUserById(userId) {
-    const sql = `SELECT * FROM sys_user WHERE user_id = ?;`;
+    const sql = `SELECT id,username,nickname,headimg,addtime,edittime FROM roc_user WHERE id = ?;`;
     const [result] = await db.execute(sql, [userId]);
-    return apiSuccess(result);
+    if (result.length) {
+      return apiSuccess(result[0]);
+    } else {
+      return apiError("无此用户");
+    }
   }
 }
 

@@ -6,7 +6,7 @@ const { PRIVATE_KEY } = require("../app/config");
 
 class LoginService {
   async login(username, password) {
-    const sql = "SELECT * FROM sys_user WHERE user_name = ?";
+    const sql = "SELECT id,username,nickname,headimg,addtime,edittime FROM roc_user WHERE username = ?";
     const [result] = await db.execute(sql, [username]);
     if (result.length == 0) {
       return apiError("无此用户");
@@ -19,8 +19,8 @@ class LoginService {
       */
       const token = jwt.sign(
         {
-          id: result[0].user_id,
-          username: result[0].user_name,
+          id: result[0].id,
+          username: result[0].username,
         },
         PRIVATE_KEY,
         {
