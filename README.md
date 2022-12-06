@@ -1,37 +1,37 @@
 # roc-cli-koa-template
 
-#### 介绍
-roc脚手架koa模板
+roc 脚手架 koa 项目模板
 
-#### 软件架构
-软件架构说明
+个人网站: [https://rocyuan.top](https://rocyuan.top)
 
+## 环境
 
-#### 安装教程
+`以下版本为本人使用环境，其他版本未测`
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- node v14.18.2
+- mysql v5.7.26
+- redis v7.0.4
 
-#### 使用说明
+# roc-cli
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 介绍
 
-#### 参与贡献
+平时开发项目用 vue 或 react 等脚手架创建的项目，都需要手动删除一堆原始无用代码并且配置非常多的库及相关配置，非常麻烦，roc-cli 会帮你创建没有原始无用代码并且有常用的库及配置的项目模板，提高开发效率，目前提供 vue2.x、uni-app、react、koa2 项目，后续会一直维护项目模板。
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 安装教程
 
+全局安装：` npm i -g roc-cli`
 
-#### 特技
+## 使用说明
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+全局下安装了 roc-cli 后就可以在命令行使用 `roc create <project-name>` 命令创建项目；创建项目会询问项目类型，上下键进行选择，回车确定。
+
+```bash
+roc create project-name
+
+⭐ Please select the project type to create:  (Use arrow keys)
+  vue2.x
+  uniapp
+  react
+> koa2
+```
