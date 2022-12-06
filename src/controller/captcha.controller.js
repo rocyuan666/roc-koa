@@ -3,7 +3,7 @@ const { createUUID } = require("roc-utils");
 const redisClient = require("../app/redis");
 
 class CaptchaController {
-  async getCaptcha(ctx, next) {
+  async getCaptcha(ctx) {
     const cap = parseInt(Math.random() * 9000 + 1000);
     const uuid = createUUID();
     await redisClient.set(uuid, cap, {

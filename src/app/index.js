@@ -15,7 +15,7 @@ app.use(serve(path.join(__dirname, "..", "..", "./public")));
 app.useRoutes = useRoutes;
 app.use(bodyParser());
 app.useRoutes();
-app.on("error", (err, ctx) => {
+app.on("error", (err) => {
   console.log(err);
 });
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const CryptoJs = require("crypto-js");
 const { DES_KEY } = require("../app/config");
 

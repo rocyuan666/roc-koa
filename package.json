@@ -27,6 +27,7 @@
     "roc-utils": "^0.1.8"
   },
   "devDependencies": {
+    "eslint": "^8.29.0",
     "nodemon": "^2.0.6"
   }
 }

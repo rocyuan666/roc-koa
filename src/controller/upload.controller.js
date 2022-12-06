@@ -1,7 +1,7 @@
 const uploadService = require("../service/upload.service");
 
 class UploadController {
-  async upload(ctx, next) {
+  async upload(ctx) {
     ctx.body = await uploadService.upload(ctx.file);
   }
 }
