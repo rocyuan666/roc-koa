@@ -1,5 +1,5 @@
 const log4js = require("log4js");
-const logConfig = require("../app/config/log4");
+const logConfig = require("../app/log4.config");
 
 /*
   logger 中间件

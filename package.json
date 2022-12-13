@@ -19,6 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
+    "koa-sslify": "^5.0.1",
     "koa-static": "^5.0.0",
     "log4js": "^6.7.1",
     "multer": "^1.4.5-lts.1",
