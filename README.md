@@ -14,6 +14,9 @@ roc 脚手架 koa 项目模板
 
 # roc-cli
 
+[![npm version](https://img.shields.io/npm/v/roc-cli.svg?logo=npm&style=flat-square)](https://www.npmjs.com/package/roc-cli)
+[![npm downloads](https://img.shields.io/npm/dt/roc-cli.svg?style=flat-square)](https://www.npmjs.com/package/roc-cli)
+
 ## 介绍
 
 平时开发项目用 vue 或 react 等脚手架创建的项目，都需要手动删除一堆原始无用代码并且配置非常多的库及相关配置，非常麻烦，roc-cli 会帮你创建没有原始无用代码并且有常用的库及配置的项目模板，提高开发效率，目前提供 vue2.x、uni-app、react、koa 项目，后续会一直维护项目模板。
