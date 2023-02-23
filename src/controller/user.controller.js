@@ -2,8 +2,8 @@ const userService = require("../service/user.service");
 
 class UserController {
   async findById(ctx) {
-    const { userId } = ctx.params;
-    ctx.body = await userService.getUserById(userId);
+    const { id } = ctx.user;
+    ctx.body = await userService.getUserById(id);
   }
 }
 

@@ -4,6 +4,6 @@ const { tokenAuth } = require("../middleware/auto.middleware");
 
 const userRouter = new Router({ prefix: "/user" });
 
-userRouter.get("/:userId", tokenAuth, findById);
+userRouter.get("/info", tokenAuth, findById);
 
 module.exports = userRouter;

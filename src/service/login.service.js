@@ -20,7 +20,7 @@ class LoginService {
     } else if (redisCaptcha !== captcha) {
       return apiError("验证码错误!", -1);
     }
-    const sql = "SELECT password FROM roc_user WHERE username = ?";
+    const sql = "SELECT * FROM roc_user WHERE username = ?";
     const [result] = await db.execute(sql, [username]);
     if (result.length == 0) {
       return apiError("无此用户");
