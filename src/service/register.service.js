@@ -15,11 +15,11 @@ class RegisterService {
     } else if (!username) {
       return apiError("用户名为空!");
     } else if (!password) {
-      return apiError("密码为空！");
+      return apiError("密码为空!");
     } else if (!captcha) {
-      return apiError("验证码为空！");
+      return apiError("验证码为空!");
     } else if (captcha !== redisCaptcha) {
-      return apiError("验证码错误！");
+      return apiError("验证码错误!");
     }
     const selectSql = "SELECT * FROM roc_user WHERE username = ?";
     const [err1, results1] = await asyncTasks(db.query(selectSql, [username]));

@@ -19,7 +19,7 @@ class LoginService {
     } else if (!captcha) {
       return apiError("验证码为空!");
     } else if (redisCaptcha !== captcha) {
-      return apiError("验证码错误!", -1);
+      return apiError("验证码错误!", 2);
     }
     const sql = "SELECT * FROM roc_user WHERE username = ?";
     const [err, results] = await asyncTasks(db.query(sql, [username]));

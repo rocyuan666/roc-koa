@@ -16,7 +16,7 @@ const tokenAuth = async (ctx, next) => {
       ctx.user = decode;
       await next();
     } catch (error) {
-      ctx.body = apiError("token失效", 401);
+      ctx.body = apiError("token失效", 402);
     }
   }
 };
