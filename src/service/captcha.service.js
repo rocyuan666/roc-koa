@@ -1,11 +1,11 @@
 const captchapng = require("captchapng");
-const { createUUID } = require("roc-utils");
+const { createUUID, randomNum } = require("roc-utils");
 const { apiSuccess } = require("../utils/apiBase");
 const redisClient = require("../app/redis");
 
 class CaptchaService {
   async getCaptcha() {
-    const cap = parseInt(Math.random() * 9000 + 1000);
+    const cap = randomNum(1000, 9999);
     const uuid = createUUID();
     await redisClient.set(uuid, cap, {
       EX: 60, // 过期时间60秒(1分钟)
