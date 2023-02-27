@@ -1,5 +1,6 @@
-const db = require("../app/database");
+const { asyncTasks } = require("roc-utils");
 const jwt = require("jsonwebtoken");
+const db = require("../app/database");
 const { apiSuccess, apiError } = require("../utils/apiBase");
 const { md5 } = require("../utils/crypto-utils");
 const { PRIVATE_KEY } = require("../app/config");
@@ -21,10 +22,12 @@ class LoginService {
       return apiError("验证码错误!", -1);
     }
     const sql = "SELECT * FROM roc_user WHERE username = ?";
-    const [result] = await db.execute(sql, [username]);
-    if (result.length == 0) {
+    const [err, results] = await asyncTasks(db.query(sql, [username]));
+    if (err) return console.log("sql错误:", err.sqlMessage);
+    const users = results[0];
+    if (users.length == 0) {
       return apiError("无此用户");
-    } else if (md5(password) != result[0].password) {
+    } else if (md5(password) != users[0].password) {
       return apiError("密码错误");
     } else {
       /*
@@ -33,8 +36,8 @@ class LoginService {
       */
       const token = jwt.sign(
         {
-          id: result[0].id,
-          username: result[0].username,
+          id: users[0].id,
+          username: users[0].username,
         },
         PRIVATE_KEY,
         {
