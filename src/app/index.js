@@ -5,13 +5,13 @@ const serve = require("koa-static");
 const useRoutes = require("../router");
 const { cors } = require("../middleware/cors.middleware");
 const { log4jsToCtx, logger } = require("../middleware/logger.middleware");
-const { HTTPORHTTPS, SSL_KEY, SSL_CERT } = require("./config");
+const { HTTP_OR_HTTPS, SSL_KEY, SSL_CERT } = require("./config");
 
 const app = new Koa();
 
 // 开启https
 let https, options;
-if (HTTPORHTTPS == "https") {
+if (HTTP_OR_HTTPS == "https") {
   const sslify = require("koa-sslify").default;
   https = require("https");
   options = {
@@ -32,5 +32,5 @@ app.on("error", (err) => {
   console.log("应用错误:", err);
 });
 
-if (HTTPORHTTPS == "https") module.exports = https.createServer(options, app.callback());
+if (HTTP_OR_HTTPS == "https") module.exports = https.createServer(options, app.callback());
 else module.exports = app;
