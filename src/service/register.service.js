@@ -30,6 +30,7 @@ class RegisterService {
     const sqlInsert = "INSERT INTO roc_user(nickname, username, password, addtime) VALUES(?, ?, ?, ?)";
     const [err, results] = await asyncTasks(db.query(sqlInsert, [nickname, username, md5(password), addtime]));
     if (err) return console.log("sql错误:", err.sqlMessage);
+    redisClient.del(uuid);
     return apiSuccess(results[0].insertId);
   }
 }

@@ -45,6 +45,7 @@ class LoginService {
           expiresIn: 60 * 60 * 24,
         }
       );
+      redisClient.del(uuid);
       return apiSuccess({ token });
     }
   }

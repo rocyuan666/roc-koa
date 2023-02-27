@@ -29,7 +29,7 @@ app.useRoutes = useRoutes;
 app.use(bodyParser());
 app.useRoutes();
 app.on("error", (err) => {
-  console.log(err);
+  console.log("应用错误:", err);
 });
 
 if (HTTPORHTTPS == "https") module.exports = https.createServer(options, app.callback());
