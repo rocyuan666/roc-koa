@@ -1,11 +1,19 @@
 const captchapng = require("captchapng");
+const { createUUID } = require("roc-utils");
 const { apiSuccess } = require("../utils/apiBase");
+const redisClient = require("../app/redis");
 
 class CaptchaService {
-  async getCaptcha(cap, uuid) {
-    const p = new captchapng(100, 40, cap); // width,height,numeric captcha
-    p.color(220, 220, 220, 255); // First color: background (red, green, blue, alpha)
-    p.color(80, 80, 80, 255); // Second color: paint (red, green, blue, alpha)
+  async getCaptcha() {
+    const cap = parseInt(Math.random() * 9000 + 1000);
+    const uuid = createUUID();
+    await redisClient.set(uuid, cap, {
+      EX: 60, // 过期时间60秒(1分钟)
+      NX: true, // 键不存在时，对键进行设置
+    });
+    const p = new captchapng(100, 40, cap); // width, height, 数字验证码
+    p.color(220, 220, 220, 255); // 背景颜色: background (red, green, blue, alpha)
+    p.color(80, 80, 80, 255); // 数字颜色: paint (red, green, blue, alpha)
     const imgbase64 = p.getBase64();
     return apiSuccess({
       uuid,
