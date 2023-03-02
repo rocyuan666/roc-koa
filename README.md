@@ -2,7 +2,7 @@
 
 roc 脚手架 koa 项目模板
 
-个人网站: [https://rocyuan.top](https://rocyuan.top)
+个人网站: [http://rocyuan.top](http://rocyuan.top)
 
 ## 环境
 
