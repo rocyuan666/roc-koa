@@ -5,9 +5,24 @@ const serve = require("koa-static");
 const useRoutes = require("../router");
 const { cors } = require("../middleware/cors.middleware");
 const { log4jsToCtx, logger } = require("../middleware/logger.middleware");
-const { HTTP_OR_HTTPS, SSL_KEY, SSL_CERT } = require("./config");
+const { HTTP_OR_HTTPS, SSL_KEY, SSL_CERT, SWAGGER_OPEN } = require("./config");
 
 const app = new Koa();
+
+if (SWAGGER_OPEN == "true") {
+  // swagger 接口文档配置
+  const swagger = require("./swagger");
+  const { koaSwagger } = require("koa2-swagger-ui");
+  app.use(swagger.routes(), swagger.allowedMethods());
+  app.use(
+    koaSwagger({
+      routePrefix: "/swagger", // 接口文档访问地址
+      swaggerOptions: {
+        url: "/swagger.json", // swagger-jsdoc生成的json文档地址
+      },
+    })
+  );
+}
 
 // 开启https
 let https, options;

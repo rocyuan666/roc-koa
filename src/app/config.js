@@ -18,7 +18,7 @@ const SSL_CERT = fs.readFileSync(path.resolve(__dirname, "./ssl/ssl.pem"));
 
 const DES_KEY = "yuanpeng";
 
-module.exports = { APP_HOST, APP_PORT, HTTP_OR_HTTPS, APP_UPLOAD_BASEURL, MYSQL_HOST, MYSQL_PORT, MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD, REDIS_HOST, REDIS_PORT } = process.env;
+module.exports = { APP_NAME, APP_HOST, APP_PORT, HTTP_OR_HTTPS, APP_UPLOAD_BASEURL, MYSQL_HOST, MYSQL_PORT, MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD, REDIS_HOST, REDIS_PORT, SWAGGER_OPEN } = process.env;
 module.exports.PRIVATE_KEY = PRIVATE_KEY;
 module.exports.PUBLIC_KEY = PUBLIC_KEY;
 module.exports.SSL_KEY = SSL_KEY;
