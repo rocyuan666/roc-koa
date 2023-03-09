@@ -1,7 +1,7 @@
 const path = require("path");
 const router = require("@koa/router")(); //引入路由函数
 const swaggerJSDoc = require("swagger-jsdoc");
-const { APP_NAME, APP_HOST, APP_PORT } = require("./config");
+const { APP_NAME } = require("./config");
 
 const swaggerDefinition = {
   info: {
@@ -14,7 +14,6 @@ const swaggerDefinition = {
       email: "rocyuan666@163.com",
     },
   },
-  host: `${APP_HOST}:${APP_PORT}`,
   basePath: "/", // Base path 如 /api ...
   consumes: ["application/x-www-form-urlencoded"],
   enableSecurity: true,
