@@ -12,6 +12,8 @@ const uploadRouter = new Router({ prefix: "/upload" });
  *     summary: 文件上传
  *     tags:
  *       - upload
+ *     consumes:
+ *       - form-data
  *     parameters:
  *       - name: file
  *         type: file
