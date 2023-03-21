@@ -1,5 +1,5 @@
 const Router = require("@koa/router");
-const { upload } = require("../controller/upload.controller");
+const uploadController = require("../controller/upload.controller");
 const { uploadMiddleware } = require("../middleware/upload.middleware");
 const { tokenAuth } = require("../middleware/auto.middleware");
 
@@ -24,6 +24,6 @@ const uploadRouter = new Router({ prefix: "/upload" });
  *       0:
  *         description: 成功
  */
-uploadRouter.post("/", tokenAuth, uploadMiddleware, upload);
+uploadRouter.post("/", tokenAuth, uploadMiddleware, uploadController.upload.bind(uploadController));
 
 module.exports = uploadRouter;

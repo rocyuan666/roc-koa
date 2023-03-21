@@ -1,5 +1,5 @@
 const Router = require("@koa/router");
-const { register } = require("../controller/register.controller");
+const registerController = require("../controller/register.controller");
 
 const registerRouter = new Router({ prefix: "/register" });
 
@@ -40,6 +40,6 @@ const registerRouter = new Router({ prefix: "/register" });
  *       0:
  *         description: 成功
  */
-registerRouter.post("/", register);
+registerRouter.post("/", registerController.register.bind(registerController));
 
 module.exports = registerRouter;

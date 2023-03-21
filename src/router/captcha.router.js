@@ -1,5 +1,5 @@
 const Router = require("@koa/router");
-const { getCaptcha } = require("../controller/captcha.controller");
+const captchaController = require("../controller/captcha.controller");
 
 const captchaRouter = new Router({ prefix: "/captcha" });
 
@@ -14,6 +14,6 @@ const captchaRouter = new Router({ prefix: "/captcha" });
  *       0:
  *         description: 成功
  */
-captchaRouter.get("/", getCaptcha);
+captchaRouter.get("/", captchaController.getCaptcha.bind(captchaController));
 
 module.exports = captchaRouter;

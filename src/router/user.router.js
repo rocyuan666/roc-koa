@@ -1,5 +1,5 @@
 const Router = require("@koa/router");
-const { findById } = require("../controller/user.controller");
+const userController = require("../controller/user.controller");
 const { tokenAuth } = require("../middleware/auto.middleware");
 
 const userRouter = new Router({ prefix: "/user" });
@@ -15,6 +15,6 @@ const userRouter = new Router({ prefix: "/user" });
  *       0:
  *         description: 成功
  */
-userRouter.get("/info", tokenAuth, findById);
+userRouter.get("/info", tokenAuth, userController.findById.bind(userController));
 
 module.exports = userRouter;

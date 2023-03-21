@@ -1,5 +1,5 @@
 const Router = require("@koa/router");
-const { login } = require("../controller/login.controller");
+const loginController = require("../controller/login.controller");
 
 const loginRouter = new Router({ prefix: "/login" });
 /**
@@ -34,6 +34,6 @@ const loginRouter = new Router({ prefix: "/login" });
  *       0:
  *         description: 成功，返回token
  */
-loginRouter.post("/", login);
+loginRouter.post("/", loginController.login.bind(loginController));
 
 module.exports = loginRouter;
